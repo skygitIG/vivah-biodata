@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en-IN" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vivah Biodata — Premium Marriage Biodata Maker Online</title>
+    <meta
+      name="description"
+      content="Create an elegant, print-ready marriage biodata in minutes. Trusted layouts for Indian families — classic, modern, and regional styles. Start free."
+    />
+    <link rel="canonical" href="https://www.example.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Vivah Biodata — Premium Marriage Biodata Maker" />
+    <meta
+      property="og:description"
+      content="Beautiful biodata templates, guided fields, and instant PDF export for matrimonial profiles."
+    />
+    <meta property="og:url" content="https://www.example.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#FDF8F3" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <style>
+      :root {
+        --font-display: "Cormorant Garamond", Georgia, serif;
+        --font-sans: "DM Sans", system-ui, sans-serif;
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "Vivah Biodata",
+            "url": "https://www.example.com/",
+            "logo": "https://www.example.com/assets/img/logo-mark.svg",
+            "description": "Online marriage biodata maker for Indian matrimonial profiles.",
+            "sameAs": ["https://www.instagram.com/", "https://www.facebook.com/"]
+          },
+          {
+            "@type": "WebSite",
+            "name": "Vivah Biodata",
+            "url": "https://www.example.com/",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://www.example.com/templates.html?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Vivah Biodata Maker",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "Web",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body class="bg-cream-50 text-stone-800 antialiased font-sans">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:shadow-soft"
+      >Skip to content</a
+    >
+
+    <header
+      id="site-header"
+      class="fixed inset-x-0 top-0 z-50 border-b border-cream-200/60 bg-cream-50/90 backdrop-blur-md transition-shadow duration-300 shadow-none"
+    >
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+        <a href="index.html" class="group flex items-center gap-2">
+          <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-500 to-gold-600 text-lg font-display font-semibold text-white shadow-soft">V</span>
+          <span class="font-display text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl">Vivah<span class="text-gold-600"> Biodata</span></span>
+        </a>
+        <nav class="hidden items-center gap-8 text-sm font-medium text-stone-700 lg:flex" aria-label="Primary">
+          <a href="index.html" class="text-gold-600">Home</a>
+          <a href="about.html" class="transition hover:text-gold-600">About</a>
+          <a href="templates.html" class="transition hover:text-gold-600">Templates</a>
+          <a href="create.html" class="transition hover:text-gold-600">Make biodata</a>
+          <a href="faq.html" class="transition hover:text-gold-600">FAQ</a>
+          <a href="contact.html" class="transition hover:text-gold-600">Contact</a>
+        </nav>
+        <div class="hidden items-center gap-3 lg:flex">
+          <a
+            href="templates.html"
+            class="rounded-full border border-cream-300 bg-white/80 px-4 py-2 text-sm font-semibold text-stone-800 shadow-soft transition hover:border-gold-400 hover:text-gold-700"
+            >View templates</a
+          >
+          <a
+            href="create.html"
+            class="rounded-full bg-gradient-to-r from-gold-500 to-gold-600 px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:from-gold-600 hover:to-gold-600 hover:shadow-lift"
+            >Create biodata</a
+          >
+        </div>
+        <button
+          type="button"
+          id="menu-toggle"
+          class="inline-flex items-center justify-center rounded-xl border border-cream-300 bg-white/90 p-2.5 text-stone-800 lg:hidden"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Open menu"
+        >
+          <svg id="menu-icon-open" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="menu-icon-close" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div id="mobile-nav" class="hidden border-t border-cream-200/80 bg-cream-50/98 px-4 py-4 lg:hidden" role="dialog" aria-label="Mobile menu">
+        <nav class="flex flex-col gap-1 text-base font-medium" aria-label="Mobile primary">
+          <a class="rounded-lg px-3 py-2 text-gold-700" href="index.html">Home</a>
+          <a class="rounded-lg px-3 py-2 hover:bg-cream-200/50" href="about.html">About</a>
+          <a class="rounded-lg px-3 py-2 hover:bg-cream-200/50" href="templates.html">Templates</a>
+          <a class="rounded-lg px-3 py-2 hover:bg-cream-200/50" href="create.html">Make biodata</a>
+          <a class="rounded-lg px-3 py-2 hover:bg-cream-200/50" href="faq.html">FAQ</a>
+          <a class="rounded-lg px-3 py-2 hover:bg-cream-200/50" href="contact.html">Contact</a>
+        </nav>
+        <div class="mt-4 flex flex-col gap-2">
+          <a href="templates.html" class="rounded-full border border-cream-300 bg-white py-3 text-center text-sm font-semibold">View templates</a>
+          <a href="create.html" class="rounded-full bg-gold-500 py-3 text-center text-sm font-semibold text-white">Create biodata</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="pt-[72px]">
+      <!-- Hero -->
+      <section class="relative overflow-hidden bg-hero-mesh pb-16 pt-10 sm:pb-24 sm:pt-16">
+        <div class="pointer-events-none absolute -right-24 top-20 h-72 w-72 rounded-full bg-rose-soft/40 blur-3xl" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-sage-soft/50 blur-3xl" aria-hidden="true"></div>
+        <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            <div data-hero-inner>
+              <p class="mb-3 inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-gold-700">
+                Trusted by families across India
+              </p>
+              <h1 class="font-display text-4xl font-semibold leading-tight text-stone-900 sm:text-5xl lg:text-[3.25rem] xl:text-6xl">
+                A marriage biodata that feels <span class="text-gold-600">worthy of your story</span>
+              </h1>
+              <p class="mt-5 max-w-xl text-lg text-stone-600">
+                Guided sections, live preview, and a filled PDF you save from your browser — every template is free. No payment on this site.
+              </p>
+              <div class="mt-8 flex flex-wrap items-center gap-4">
+                <a
+                  href="create.html"
+                  class="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-gold-500 to-gold-600 px-8 py-3.5 text-base font-semibold text-white shadow-lift transition hover:from-gold-600 hover:to-gold-600"
+                  >Fill biodata &amp; save PDF — free</a
+                >
+                <a href="templates.html" class="text-sm font-semibold text-gold-700 underline-offset-4 hover:underline">Browse templates</a>
+              </div>
+              <ul class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-stone-600">
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-gold-500" aria-hidden="true"></span> No design skills needed
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-gold-500" aria-hidden="true"></span> Hindi & English friendly
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-gold-500" aria-hidden="true"></span> Private & secure
+                </li>
+              </ul>
+            </div>
+            <div class="relative" data-reveal>
+              <div class="glass relative overflow-hidden rounded-3xl p-6 shadow-lift sm:p-8">
+                <div class="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent" aria-hidden="true"></div>
+                <div class="relative space-y-4">
+                  <div class="flex items-center justify-between border-b border-cream-200 pb-4">
+                    <span class="font-display text-lg font-semibold text-stone-900">Biodata preview</span>
+                    <span class="rounded-full bg-sage-soft/80 px-3 py-1 text-xs font-semibold text-stone-700">PDF ready</span>
+                  </div>
+                  <div class="overflow-hidden rounded-2xl bg-cream-100/90 p-3 ring-1 ring-cream-200">
+                    <img
+                      src="assets/img/hero-biodata.svg"
+                      alt="Illustration of a finished marriage biodata document"
+                      class="mx-auto h-auto w-full max-w-sm rounded-lg"
+                      width="480"
+                      height="360"
+                      decoding="async"
+                      fetchpriority="high"
+                    />
+                  </div>
+                  <p class="text-center text-xs text-stone-500">Illustrative layout — your details appear in the template you choose.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section class="border-y border-cream-200/80 bg-white py-16 sm:py-20" aria-labelledby="features-heading">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center" data-reveal>
+            <h2 id="features-heading" class="font-display text-3xl font-semibold text-stone-900 sm:text-4xl">Everything families expect — <span class="text-gold-600">nothing fussy</span></h2>
+            <p class="mt-3 text-stone-600">Thoughtful defaults for Indian matrimonial biodata: sections, tone, and spacing that read well on phone and paper.</p>
+          </div>
+          <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <article class="group rounded-2xl border border-cream-200/80 bg-cream-50/50 p-6 shadow-soft transition hover:-translate-y-0.5 hover:border-gold-400/40 hover:shadow-lift" data-reveal data-float-card>
+              <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gold-500/15 text-gold-700">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              </div>
+              <h3 class="font-display text-xl font-semibold text-stone-900">Structured sections</h3>
+              <p class="mt-2 text-sm leading-relaxed text-stone-600">Personal, family, education, career, and preferences — aligned with common family review habits.</p>
+            </article>
+            <article class="group rounded-2xl border border-cream-200/80 bg-cream-50/50 p-6 shadow-soft transition hover:-translate-y-0.5 hover:border-gold-400/40 hover:shadow-lift" data-reveal data-float-card>
+              <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-soft/60 text-stone-800">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+              </div>
+              <h3 class="font-display text-xl font-semibold text-stone-900">Premium typography</h3>
+              <p class="mt-2 text-sm leading-relaxed text-stone-600">Readable body text with elegant headings — tuned for both screen sharing and print.</p>
+            </article>
+            <article class="group rounded-2xl border border-cream-200/80 bg-cream-50/50 p-6 shadow-soft transition hover:-translate-y-0.5 hover:border-gold-400/40 hover:shadow-lift sm:col-span-2 lg:col-span-1" data-reveal data-float-card>
+              <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-sage-soft/80 text-stone-800">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              </div>
+              <h3 class="font-display text-xl font-semibold text-stone-900">Privacy first</h3>
+              <p class="mt-2 text-sm leading-relaxed text-stone-600">Your information is yours. Export when you are ready — no noisy social layer.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Template showcase -->
+      <section class="bg-cream-100 py-16 sm:py-20" aria-labelledby="templates-heading">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end" data-reveal>
+            <div class="max-w-xl">
+              <h2 id="templates-heading" class="font-display text-3xl font-semibold text-stone-900 sm:text-4xl">Templates that feel <span class="italic text-gold-600">celebratory</span>, not dated</h2>
+              <p class="mt-3 text-stone-600">Curated categories for different communities and tastes — each crafted for clarity and warmth.</p>
+            </div>
+            <a href="templates.html" class="inline-flex items-center gap-2 rounded-full border border-stone-800/10 bg-white px-5 py-2.5 text-sm font-semibold text-stone-900 shadow-soft transition hover:border-gold-400 hover:text-gold-700"
+              >See all templates <span aria-hidden="true">→</span></a
+            >
+          </div>
+          <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <article class="overflow-hidden rounded-2xl border border-cream-200 bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift" data-reveal data-float-card>
+              <div class="aspect-[5/7] overflow-hidden bg-gradient-to-br from-cream-200 via-white to-rose-soft/40 p-4 sm:p-5">
+                <img
+                  src="assets/img/preview-classic.svg"
+                  alt="Heritage Gold template thumbnail"
+                  class="h-full w-full rounded-xl object-contain object-top shadow-inner ring-1 ring-cream-200/80"
+                  width="400"
+                  height="560"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="p-5">
+                <p class="text-xs font-semibold uppercase tracking-wide text-gold-600">Classic</p>
+                <h3 class="mt-1 font-display text-lg font-semibold text-stone-900">Heritage Gold</h3>
+                <p class="mt-1 text-sm text-stone-600">Traditional frame, warm cream paper tone.</p>
+                <div class="mt-4 flex gap-2">
+                  <a href="templates.html#heritage" class="flex-1 rounded-full border border-cream-300 py-2 text-center text-xs font-semibold transition hover:border-gold-500 hover:text-gold-700">Preview</a>
+                  <a href="create.html?style=classic" class="flex-1 rounded-full bg-gold-500 py-2 text-center text-xs font-semibold text-white">Fill &amp; PDF</a>
+                </div>
+              </div>
+            </article>
+            <article class="overflow-hidden rounded-2xl border border-cream-200 bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift" data-reveal data-float-card>
+              <div class="aspect-[5/7] overflow-hidden bg-gradient-to-br from-sage-soft/50 via-white to-cream-100 p-4 sm:p-5">
+                <img
+                  src="assets/img/preview-modern.svg"
+                  alt="Minimal Verdant template thumbnail"
+                  class="h-full w-full rounded-xl object-contain object-top shadow-inner ring-1 ring-sage-soft"
+                  width="400"
+                  height="560"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="p-5">
+                <p class="text-xs font-semibold uppercase tracking-wide text-gold-600">Modern</p>
+                <h3 class="mt-1 font-display text-lg font-semibold text-stone-900">Minimal Verdant</h3>
+                <p class="mt-1 text-sm text-stone-600">Clean lines with soft botanical accents.</p>
+                <div class="mt-4 flex gap-2">
+                  <a href="templates.html#minimal" class="flex-1 rounded-full border border-cream-300 py-2 text-center text-xs font-semibold transition hover:border-gold-500 hover:text-gold-700">Preview</a>
+                  <a href="create.html?style=modern" class="flex-1 rounded-full bg-gold-500 py-2 text-center text-xs font-semibold text-white">Fill &amp; PDF</a>
+                </div>
+              </div>
+            </article>
+            <article class="overflow-hidden rounded-2xl border border-cream-200 bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift" data-reveal data-float-card>
+              <div class="aspect-[5/7] overflow-hidden bg-gradient-to-br from-rose-soft/60 via-white to-cream-50 p-4 sm:p-5">
+                <img
+                  src="assets/img/preview-festive.svg"
+                  alt="Festive Blush template thumbnail"
+                  class="h-full w-full rounded-xl object-contain object-top shadow-inner ring-1 ring-rose-soft"
+                  width="400"
+                  height="560"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="p-5">
+                <p class="text-xs font-semibold uppercase tracking-wide text-gold-600">Regional</p>
+                <h3 class="mt-1 font-display text-lg font-semibold text-stone-900">Festive Blush</h3>
+                <p class="mt-1 text-sm text-stone-600">Gentle motifs suitable for festive sharing.</p>
+                <div class="mt-4 flex gap-2">
+                  <a href="templates.html#festive" class="flex-1 rounded-full border border-cream-300 py-2 text-center text-xs font-semibold transition hover:border-gold-500 hover:text-gold-700">Preview</a>
+                  <a href="create.html?style=festive" class="flex-1 rounded-full bg-gold-500 py-2 text-center text-xs font-semibold text-white">Fill &amp; PDF</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section class="bg-white py-16 sm:py-20" aria-labelledby="how-heading">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 id="how-heading" class="text-center font-display text-3xl font-semibold text-stone-900 sm:text-4xl" data-reveal>How it works</h2>
+          <p class="mx-auto mt-3 max-w-2xl text-center text-stone-600" data-reveal>Pick a visible layout, enter your details in the free maker, then save as PDF from your browser.</p>
+          <ol class="mt-14 grid gap-8 md:grid-cols-3">
+            <li class="relative rounded-2xl glass p-6 text-center" data-reveal data-float-card>
+              <span class="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-gold-500 text-sm font-bold text-white">1</span>
+              <h3 class="mt-4 font-display text-lg font-semibold text-stone-900">Pick a template</h3>
+              <p class="mt-2 text-sm text-stone-600">See the full-page design on the Templates page — classic, modern, or festive.</p>
+            </li>
+            <li class="relative rounded-2xl glass p-6 text-center" data-reveal data-float-card>
+              <span class="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-gold-500 text-sm font-bold text-white">2</span>
+              <h3 class="mt-4 font-display text-lg font-semibold text-stone-900">Fill your details</h3>
+              <p class="mt-2 text-sm text-stone-600">Open <a href="create.html" class="font-semibold text-gold-700 underline">Make biodata</a> — the preview updates as you type. Everything is free.</p>
+            </li>
+            <li class="relative rounded-2xl glass p-6 text-center" data-reveal data-float-card>
+              <span class="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-gold-500 text-sm font-bold text-white">3</span>
+              <h3 class="mt-4 font-display text-lg font-semibold text-stone-900">Fill details &amp; download PDF</h3>
+              <p class="mt-2 text-sm text-stone-600">Your text flows into the chosen layout. Save as PDF from the print dialog — no fee.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="border-y border-cream-200/80 bg-cream-50 py-16 sm:py-20" aria-labelledby="testimonials-heading">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 id="testimonials-heading" class="text-center font-display text-3xl font-semibold text-stone-900 sm:text-4xl" data-reveal>Stories from families</h2>
+          <div class="mt-12 grid gap-6 lg:grid-cols-3">
+            <figure class="rounded-2xl border border-cream-200 bg-white p-6 shadow-soft" data-reveal data-float-card>
+              <blockquote class="text-sm leading-relaxed text-stone-700">“We needed something presentable within a day. The layout looked premium on WhatsApp and print — relatives asked where we made it.”</blockquote>
+              <figcaption class="mt-4 text-sm font-semibold text-stone-900">— Meera S., Pune</figcaption>
+            </figure>
+            <figure class="rounded-2xl border border-cream-200 bg-white p-6 shadow-soft" data-reveal data-float-card>
+              <blockquote class="text-sm leading-relaxed text-stone-700">“Finally a biodata that does not look like a random Word file. The gold accents felt appropriate without being loud.”</blockquote>
+              <figcaption class="mt-4 text-sm font-semibold text-stone-900">— Arjun K., Bengaluru</figcaption>
+            </figure>
+            <figure class="rounded-2xl border border-cream-200 bg-white p-6 shadow-soft" data-reveal data-float-card>
+              <blockquote class="text-sm leading-relaxed text-stone-700">“My parents could read every section easily. That mattered more than any fancy graphic.”</blockquote>
+              <figcaption class="mt-4 text-sm font-semibold text-stone-900">— Ananya R., Hyderabad</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats -->
+      <section class="bg-gradient-to-b from-white to-cream-100 py-16 sm:py-20" aria-labelledby="stats-heading">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 id="stats-heading" class="sr-only">Impact in numbers</h2>
+          <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="text-center" data-reveal>
+              <p class="font-display text-4xl font-semibold text-gold-600 sm:text-5xl"><span data-counter="12000">0</span>+</p>
+              <p class="mt-2 text-sm font-medium text-stone-600">Biodata drafts created</p>
+            </div>
+            <div class="text-center" data-reveal>
+              <p class="font-display text-4xl font-semibold text-gold-600 sm:text-5xl"><span data-counter="48">0</span></p>
+              <p class="mt-2 text-sm font-medium text-stone-600">Premium templates</p>
+            </div>
+            <div class="text-center" data-reveal>
+              <p class="font-display text-4xl font-semibold text-gold-600 sm:text-5xl">4.9<span class="text-2xl text-stone-500">/5</span></p>
+              <p class="mt-2 text-sm font-medium text-stone-600">Average satisfaction</p>
+            </div>
+            <div class="text-center" data-reveal>
+              <p class="font-display text-4xl font-semibold text-gold-600 sm:text-5xl"><span data-counter="250">0</span>+</p>
+              <p class="mt-2 text-sm font-medium text-stone-600">Cities represented</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ home -->
+      <section class="bg-white py-16 sm:py-20" aria-labelledby="faq-home-heading">
+        <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <h2 id="faq-home-heading" class="text-center font-display text-3xl font-semibold text-stone-900" data-reveal>Common questions</h2>
+          <p class="mt-3 text-center text-stone-600" data-reveal>Quick answers — visit the <a class="font-semibold text-gold-700 underline-offset-2 hover:underline" href="faq.html">full FAQ</a> for more.</p>
+          <div class="mt-10 space-y-3" data-accordion>
+            <div class="rounded-2xl border border-cream-200 bg-cream-50/50" data-accordion-item data-open="false">
+              <button type="button" class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-semibold text-stone-900 sm:text-base" data-accordion-trigger aria-expanded="false">
+                Is my data secure?
+                <span class="text-gold-600" aria-hidden="true">+</span>
+              </button>
+              <div data-accordion-panel>
+                <div class="px-5 pb-4 text-sm leading-relaxed text-stone-600">Yes. We use modern encryption in transit and sensible retention practices. You control exports and can delete drafts anytime.</div>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-cream-200 bg-cream-50/50" data-accordion-item data-open="false">
+              <button type="button" class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-semibold text-stone-900 sm:text-base" data-accordion-trigger aria-expanded="false">
+                Can I print at home?
+                <span class="text-gold-600" aria-hidden="true">+</span>
+              </button>
+              <div data-accordion-panel>
+                <div class="px-5 pb-4 text-sm leading-relaxed text-stone-600">Absolutely. PDFs are optimized for A4 printing with balanced margins and readable type sizes.</div>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-cream-200 bg-cream-50/50" data-accordion-item data-open="false">
+              <button type="button" class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-semibold text-stone-900 sm:text-base" data-accordion-trigger aria-expanded="false">
+                Do you support Hindi content?
+                <span class="text-gold-600" aria-hidden="true">+</span>
+              </button>
+              <div data-accordion-panel>
+                <div class="px-5 pb-4 text-sm leading-relaxed text-stone-600">Yes — fields accept Hindi and English, and fonts are chosen for clear Devanagari rendering where applicable.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="border-t border-cream-200/80 bg-cream-100 py-16" aria-labelledby="newsletter-heading">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-xl rounded-3xl glass px-6 py-10 text-center shadow-lift sm:px-10" data-reveal>
+            <h2 id="newsletter-heading" class="font-display text-2xl font-semibold text-stone-900 sm:text-3xl">Gentle tips for a graceful biodata</h2>
+            <p class="mt-2 text-sm text-stone-600">Short notes on wording, photos, and family sections — no spam.</p>
+            <form id="newsletter-form" class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-stretch">
+              <label class="sr-only" for="newsletter-email">Email</label>
+              <input
+                id="newsletter-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                placeholder="Your email address"
+                class="min-h-[48px] flex-1 rounded-full border border-cream-300 bg-white/90 px-5 text-sm text-stone-800 shadow-inner outline-none ring-gold-400/40 placeholder:text-stone-400 focus:ring-2"
+              />
+              <button type="submit" class="min-h-[48px] rounded-full bg-stone-900 px-8 text-sm font-semibold text-white transition hover:bg-stone-800">Subscribe</button>
+            </form>
+            <p id="newsletter-msg" class="mt-4 hidden text-sm font-medium text-gold-700" role="status"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-cream-200 bg-stone-900 text-cream-100">
+      <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+        <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <p class="font-display text-xl font-semibold text-white">Vivah Biodata</p>
+            <p class="mt-3 text-sm leading-relaxed text-cream-200/90">Dignified biodata layouts for Indian matrimonial journeys — fast, calm, and print-ready.</p>
+            <div class="mt-5 flex gap-3">
+              <a href="https://www.instagram.com/" class="rounded-full border border-white/15 p-2 transition hover:border-gold-400 hover:text-gold-300" aria-label="Instagram">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zM12 6.75A5.25 5.25 0 1017.25 12 5.25 5.25 0 0012 6.75zm0 1.5a3.75 3.75 0 110 7.5 3.75 3.75 0 010-7.5zm5.35-3.1a1.1 1.1 0 11-2.2 0 1.1 1.1 0 012.2 0z"/></svg>
+              </a>
+              <a href="https://www.facebook.com/" class="rounded-full border border-white/15 p-2 transition hover:border-gold-400 hover:text-gold-300" aria-label="Facebook">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.2-1.5 1.6-1.5H17V4.6h-2.4c-2.9 0-4.6 1.8-4.6 5v2.4H7v3h3V22h3.5z"/></svg>
+              </a>
+              <a href="https://twitter.com/" class="rounded-full border border-white/15 p-2 transition hover:border-gold-400 hover:text-gold-300" aria-label="X">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.22 3h3.22l-7.04 8.04L22 21h-6.43l-5.03-6.58L5.47 21H2.24l7.53-8.58L2 3h6.59l4.55 5.95L18.22 3zm-1.13 16.17h1.79L7.94 4.78H6.05l11.04 14.39z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-wide text-cream-200/80">Product</p>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li><a class="text-cream-100/90 hover:text-white" href="templates.html">Templates</a></li>
+              <li><a class="text-cream-100/90 hover:text-white" href="create.html">PDF maker</a></li>
+              <li><a class="text-cream-100/90 hover:text-white" href="faq.html">FAQ</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-wide text-cream-200/80">Company</p>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li><a class="text-cream-100/90 hover:text-white" href="about.html">About</a></li>
+              <li><a class="text-cream-100/90 hover:text-white" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-wide text-cream-200/80">Legal</p>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li><a class="text-cream-100/90 hover:text-white" href="privacy.html">Privacy Policy</a></li>
+              <li><a class="text-cream-100/90 hover:text-white" href="terms.html">Terms &amp; Conditions</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="mt-10 border-t border-white/10 pt-8 text-center text-xs text-cream-200/70">© <span id="y"></span> Vivah Biodata. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Replace 919999999999 with your WhatsApp business number (country code + number, no +) -->
+    <a
+      href="https://wa.me/919999999999?text=Hi%2C%20I%27d%20like%20help%20with%20a%20marriage%20biodata."
+      class="fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-sm font-semibold text-white shadow-lift transition hover:scale-[1.02] hover:brightness-110"
+      aria-label="Chat on WhatsApp"
+    >
+      <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 12.2c0 4.4-3.6 8-8 8-1.4 0-2.7-.4-3.8-1l-4.4 1.2 1.2-4.3c-.7-1.1-1.1-2.4-1.1-3.8 0-4.4 3.6-8 8-8s8 3.6 8 8z"/></svg>
+      <span class="hidden sm:inline">WhatsApp us</span>
+    </a>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </body>
+</html>

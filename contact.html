@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-IN" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact — Vivah Biodata</title>
+    <meta name="description" content="Contact Vivah Biodata for support, partnerships, or template questions. We reply within one business day." />
+    <link rel="canonical" href="https://www.example.com/contact.html" />
+    <meta property="og:title" content="Contact — Vivah Biodata" />
+    <meta property="og:url" content="https://www.example.com/contact.html" />
+    <meta name="theme-color" content="#FDF8F3" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <style>:root { --font-display: "Cormorant Garamond", Georgia, serif; --font-sans: "DM Sans", system-ui, sans-serif; }</style>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"ContactPage","name":"Contact","url":"https://www.example.com/contact.html"}
+    </script>
+  </head>
+  <body class="bg-cream-50 text-stone-800 antialiased font-sans">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2">Skip to content</a>
+    <header id="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-cream-200/60 bg-cream-50/90 backdrop-blur-md shadow-none">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        <a href="index.html" class="font-display text-xl font-semibold">Vivah<span class="text-gold-600"> Biodata</span></a>
+        <nav class="hidden gap-6 text-sm font-medium lg:flex">
+          <a href="index.html" class="hover:text-gold-600">Home</a>
+          <a href="templates.html" class="hover:text-gold-600">Templates</a>
+          <a href="create.html" class="hover:text-gold-600">Make biodata</a>
+          <a href="contact.html" class="text-gold-600">Contact</a>
+        </nav>
+        <button type="button" id="menu-toggle" class="rounded-xl border border-cream-300 bg-white p-2 lg:hidden" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
+          <svg id="menu-icon-open" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="menu-icon-close" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div id="mobile-nav" class="hidden border-t border-cream-200 bg-cream-50 px-4 py-4 lg:hidden">
+        <nav class="flex flex-col gap-2 font-medium"><a href="index.html">Home</a><a href="about.html">About</a><a href="templates.html">Templates</a><a href="create.html">Make biodata</a><a href="faq.html">FAQ</a><a href="contact.html" class="text-gold-700">Contact</a></nav>
+      </div>
+    </header>
+
+    <main id="main" class="pt-[72px]">
+      <section class="border-b border-cream-200 bg-hero-mesh py-12 sm:py-14">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h1 class="font-display text-4xl font-semibold text-stone-900" data-reveal>We are here to help</h1>
+          <p class="mt-3 max-w-xl text-stone-600" data-reveal>Questions about templates, billing, or partnerships — send a note or message us on WhatsApp.</p>
+        </div>
+      </section>
+      <section class="mx-auto grid max-w-6xl gap-10 px-4 py-14 lg:grid-cols-2 sm:px-6 lg:px-8">
+        <div class="rounded-3xl glass p-8 shadow-lift" data-reveal>
+          <h2 class="font-display text-2xl font-semibold text-stone-900">Send a message</h2>
+          <form id="contact-form" class="mt-6 space-y-4" novalidate>
+            <div>
+              <label for="name" class="block text-sm font-medium text-stone-700">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required class="mt-1 w-full rounded-xl border border-cream-300 bg-white/90 px-4 py-3 text-sm outline-none ring-gold-400/30 focus:ring-2" />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-stone-700">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required class="mt-1 w-full rounded-xl border border-cream-300 bg-white/90 px-4 py-3 text-sm outline-none ring-gold-400/30 focus:ring-2" />
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-stone-700">Message</label>
+              <textarea id="message" name="message" rows="5" required class="mt-1 w-full rounded-xl border border-cream-300 bg-white/90 px-4 py-3 text-sm outline-none ring-gold-400/30 focus:ring-2"></textarea>
+            </div>
+            <button type="submit" class="w-full rounded-full bg-stone-900 py-3.5 text-sm font-semibold text-white transition hover:bg-stone-800">Submit</button>
+            <p id="contact-feedback" class="mt-1 hidden min-h-[1.25rem] text-sm" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+        <div class="space-y-6" data-reveal>
+          <div class="rounded-3xl border border-cream-200 bg-white p-8 shadow-soft">
+            <h3 class="font-display text-xl font-semibold text-stone-900">WhatsApp</h3>
+            <p class="mt-2 text-sm text-stone-600">Fastest for quick questions during Indian business hours.</p>
+            <a href="https://wa.me/919999999999" class="mt-4 inline-flex rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white">Open WhatsApp</a>
+          </div>
+          <div class="rounded-3xl border border-cream-200 bg-cream-100/80 p-8">
+            <h3 class="font-display text-xl font-semibold text-stone-900">Email</h3>
+            <p class="mt-2 text-sm text-stone-600">hello@vivahbiodata.example — replace with your domain.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="border-t border-cream-200 bg-stone-900 py-8 text-center text-xs text-cream-200/80"><a href="privacy.html" class="hover:text-white">Privacy</a> · <a href="terms.html" class="hover:text-white">Terms</a></footer>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </body>
+</html>

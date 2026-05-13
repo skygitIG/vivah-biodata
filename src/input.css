@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-gold-500;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-glass;
+  }
+  .glass-dark {
+    @apply bg-cream-100/80 backdrop-blur-xl border border-cream-200/60 shadow-soft;
+  }
+}
+
+@layer components {
+  /* Always visible — scroll-reveal previously hid content when JS/CSS failed to load */
+  [data-reveal] {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 0.65s ease,
+      transform 0.65s ease;
+  }
+  [data-reveal].reveal-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  [data-accordion-panel] {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s ease;
+  }
+}
