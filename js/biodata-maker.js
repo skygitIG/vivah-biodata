@@ -13,7 +13,7 @@
 
   if (!sheet || !form) return;
 
-  var themes = ["classic", "modern", "festive"];
+  var themes = ["classic", "modern", "festive", "minimal", "elegant", "contrast"];
   var params = new URLSearchParams(window.location.search);
   var urlTheme = (params.get("style") || params.get("theme") || "").toLowerCase();
 
@@ -36,7 +36,27 @@
   function setName() {
     var el = document.getElementById("pv-name");
     var t = val("fullName");
-    if (el) el.textContent = t || "Your name here";
+    if (el) {
+      el.textContent = t || "";
+      if (!t) {
+        el.setAttribute("data-empty", "true");
+      } else {
+        el.removeAttribute("data-empty");
+      }
+    }
+  }
+
+  function syncTopGrid() {
+    if (!topGrid) return;
+    var hasName = !!val("fullName");
+    var hasPhoto = photoImg && photoImg.getAttribute("src");
+    var hasDob = !!val("dob");
+    var hasPob = !!val("pob");
+    if (!hasName && !hasPhoto && !hasDob && !hasPob) {
+      topGrid.setAttribute("data-empty", "true");
+    } else {
+      topGrid.removeAttribute("data-empty");
+    }
   }
 
   function syncPhoto() {
@@ -96,6 +116,7 @@
     setRow(document.getElementById("blk-prefs"), val("partnerPrefs"));
 
     syncPhoto();
+    syncTopGrid();
 
     document.querySelectorAll("[data-bd-section]").forEach(syncSection);
   }
@@ -116,11 +137,32 @@
     });
   }
 
+  function applyTypography() {
+    var fontFamily = document.getElementById("fontFamily");
+    var fontSize = document.getElementById("fontSize");
+    if (fontFamily) {
+      var fallback = fontFamily.value === "Cormorant Garamond" || fontFamily.value === "Georgia" ? "serif" : "sans-serif";
+      sheet.style.setProperty("--bd-font-family", fontFamily.value + ", " + fallback);
+    }
+    if (fontSize) {
+      sheet.style.setProperty("--bd-base-scale", fontSize.value);
+    }
+  }
+
   document.querySelectorAll("[data-theme-pick]").forEach(function (btn) {
     btn.addEventListener("click", function () {
       applyTheme(btn.getAttribute("data-theme-pick"));
     });
   });
+
+  var fontFamilyInput = document.getElementById("fontFamily");
+  var fontSizeInput = document.getElementById("fontSize");
+  if (fontFamilyInput) {
+    fontFamilyInput.addEventListener("change", applyTypography);
+  }
+  if (fontSizeInput) {
+    fontSizeInput.addEventListener("change", applyTypography);
+  }
 
   if (photoInput && photoImg) {
     photoInput.addEventListener("change", function () {
@@ -144,9 +186,13 @@
   }
 
   form.addEventListener("input", sync);
-  form.addEventListener("change", sync);
+  form.addEventListener("change", function (event) {
+    sync();
+    applyTypography();
+  });
 
   applyTheme(themes.indexOf(urlTheme) !== -1 ? urlTheme : "classic");
+  applyTypography();
   sync();
 
   var printBtn = document.getElementById("btn-print-pdf");

@@ -1,299 +1,429 @@
 <!DOCTYPE html>
 <html lang="en-IN" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Free biodata maker — fill details &amp; save PDF | Vivah Biodata</title>
-    <meta
-      name="description"
-      content="Choose a template design, fill your marriage biodata details, and print or save as PDF. All templates free — no payment."
-    />
-    <link rel="canonical" href="https://www.example.com/create.html" />
-    <meta property="og:title" content="Free biodata maker — Vivah Biodata" />
-    <meta property="og:url" content="https://www.example.com/create.html" />
-    <meta name="theme-color" content="#FDF8F3" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/styles.css" />
-    <style>
-      :root {
-        --font-display: "Cormorant Garamond", Georgia, serif;
-        --font-sans: "DM Sans", system-ui, sans-serif;
-        --bd-brown: #6b4f2a;
-        --bd-brown-dark: #4a3420;
-        --bd-pill: #6b4f2a;
-      }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free biodata maker — fill details &amp; save PDF | Vivah Biodata</title>
+  <meta name="description"
+    content="Choose a template design, fill your marriage biodata details, and print or save as PDF. All templates free — no payment." />
+  <link rel="canonical" href="https://www.example.com/create.html" />
+  <meta property="og:title" content="Free biodata maker — Vivah Biodata" />
+  <meta property="og:url" content="https://www.example.com/create.html" />
+  <meta name="theme-color" content="#FDF8F3" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    :root {
+      --font-display: "Cormorant Garamond", Georgia, serif;
+      --font-sans: "DM Sans", system-ui, sans-serif;
+      --font-pdf: "Inter", "DM Sans", system-ui, sans-serif;
+      --bd-brown: #6b4f2a;
+      --bd-brown-dark: #4a3420;
+      --bd-pill: #6b4f2a;
+    }
+
+    .bd-sheet {
+      position: relative;
+      width: 100%;
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 10mm 12mm;
+      box-sizing: border-box;
+      color: #111827;
+      font-family: var(--bd-font-family, var(--font-pdf));
+      font-size: calc(10pt * var(--bd-base-scale, 1));
+      line-height: 1.45;
+      background: #fff;
+      border: none;
+      border-radius: 16px;
+    }
+
+    .bd-watermark {
+      position: absolute;
+      right: -8mm;
+      top: 6mm;
+      width: 88mm;
+      height: 88mm;
+      background: url("assets/img/mandala-watermark.svg") center / contain no-repeat;
+      opacity: 0.05;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bd-sheet-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .bd-mantra {
+      text-align: center;
+      font-size: 9pt;
+      font-weight: 600;
+      color: #475569;
+      margin: 0 0 10px;
+      letter-spacing: 0.08em;
+    }
+
+    .bd-topgrid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6mm 12mm;
+      align-items: start;
+      margin-bottom: 16px;
+      margin-top: 1.5rem;
+      justify-items: center;
+    }
+
+    .bd-topgrid.bd-topgrid--nophoto {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+
+    .bd-intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      padding-left: 6mm;
+    }
+
+    .bd-photo-wrap {
+      justify-self: start;
+      align-self: start;
+    }
+
+    .bd-photo-wrap[data-empty="true"] {
+      display: none;
+    }
+
+    .bd-intro-line {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4px 14px;
+      margin: 4px 0 0;
+      font-size: 9.5pt;
+      color: #475569;
+      line-height: 1.5;
+      align-items: center;
+    }
+
+    .bd-intro-line .bd-label {
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .bd-intro-line[data-empty="true"] {
+      display: none !important;
+    }
+
+    .bd-photo-slot {
+      width: 20mm;
+      height: 20mm;
+      aspect-ratio: 1;
+      border-radius: 9999px;
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    .bd-photo-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .bd-intro-name {
+      font-family: var(--bd-font-family, var(--font-pdf));
+      font-size: 24pt;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .bd-intro-name[data-empty="true"] {
+      display: none;
+    }
+
+    .bd-intro-lines {
+      font-size: 10pt;
+      color: #475569;
+      line-height: 1.6;
+      min-height: 18px;
+    }
+
+    .bd-topgrid[data-empty="true"] {
+      display: none !important;
+    }
+
+    .bd-section {
+      margin-top: 10px;
+    }
+
+    .bd-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 9999px;
+      background: #a55f06;
+      margin: 8px auto 6px;
+    }
+
+    .bd-rows {
+      padding: 0;
+    }
+
+    .bd-row {
+      display: grid;
+      grid-template-columns: 30% 1fr;
+      gap: 6px 12px;
+      padding: 10px 0;
+      font-size: 10pt;
+    }
+
+    .bd-row:not(:last-child) {
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .bd-label {
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .bd-value {
+      word-break: break-word;
+      color: #111827;
+    }
+
+    .bd-block {
+      padding: 12px 0;
+      font-size: 10pt;
+    }
+
+    .bd-block .bd-label {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .bd-block .bd-value {
+      display: block;
+    }
+
+    .bd-section[data-hidden="true"] {
+      display: none !important;
+    }
+
+    .bd-sheet--classic {
+      border-color: rgba(107, 79, 42, 0.18);
+    }
+
+    .bd-sheet--classic .bd-pill {
+      color: #5b4630;
+      border-color: rgba(107, 79, 42, 0.14);
+    }
+
+    .bd-sheet--modern {
+      border-color: rgba(100, 116, 139, 0.24);
+    }
+
+    .bd-sheet--modern .bd-pill {
+      background: rgba(148, 163, 184, 0.12);
+      color: #0f172a;
+      border-color: transparent;
+    }
+
+    .bd-sheet--modern .bd-label {
+      color: #334155;
+    }
+
+    .bd-sheet--festive {
+      border-color: rgba(191, 90, 242, 0.18);
+    }
+
+    .bd-sheet--festive .bd-mantra {
+      color: #b91c1c;
+    }
+
+    .bd-sheet--festive .bd-pill {
+      background: rgba(248, 113, 113, 0.15);
+      color: #991b1b;
+      border-color: transparent;
+    }
+
+    .bd-sheet--festive .bd-label {
+      color: #7c2d12;
+    }
+
+    .bd-sheet--minimal {
+      border-color: rgba(148, 163, 184, 0.18);
+    }
+
+    .bd-sheet--minimal .bd-mantra {
+      color: #334155;
+    }
+
+    .bd-sheet--minimal .bd-pill {
+      background: rgba(255, 255, 255, 0.95);
+      color: #334155;
+    }
+
+    .bd-sheet--minimal .bd-label {
+      color: #334155;
+    }
+
+    .bd-sheet--elegant {
+      border-color: rgba(15, 23, 42, 0.22);
+    }
+
+    .bd-sheet--elegant .bd-mantra {
+      color: #0f172a;
+    }
+
+    .bd-sheet--elegant .bd-pill {
+      background: #0f172a;
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .bd-sheet--elegant .bd-label {
+      color: #0f172a;
+    }
+
+    .bd-sheet--contrast {
+      border-color: rgba(15, 23, 42, 0.28);
+      background: #f8fafc;
+    }
+
+    .bd-sheet--contrast .bd-mantra {
+      color: #0f172a;
+    }
+
+    .bd-sheet--contrast .bd-pill {
+      background: #0f172a;
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .bd-sheet--contrast .bd-label {
+      color: #0f172a;
+    }
+
+    @media screen {
       .bd-sheet {
-        position: relative;
-        width: 100%;
-        max-width: 210mm;
-        margin: 0 auto;
-        padding: 8mm 10mm;
-        box-sizing: border-box;
-        color: #1c1917;
-        font-size: 10pt;
-        line-height: 1.28;
-        box-shadow: 0 12px 40px rgba(45, 35, 30, 0.12);
-        overflow: hidden;
-        background: #fff;
-        border: 2px solid var(--bd-brown);
+        min-height: 0;
       }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 5mm;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      body {
+        background: #fff !important;
+      }
+
+      main {
+        padding: 0 !important;
+      }
+
+      main>div {
+        display: block !important;
+        width: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      #bd-sheet {
+        box-shadow: none !important;
+        max-width: none !important;
+        width: 100% !important;
+        min-height: 0 !important;
+        padding: 4mm 5mm !important;
+        font-size: calc(10pt * var(--bd-base-scale, 1)) !important;
+        line-height: 1.22 !important;
+        border-width: 0 !important;
+        page-break-after: avoid;
+        break-after: avoid;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: auto !important;
+        margin: 0;
+        padding: 0;
+      }
+
       .bd-watermark {
-        position: absolute;
-        right: -12mm;
-        top: -8mm;
-        width: 95mm;
-        height: 95mm;
-        background: url("assets/img/mandala-watermark.svg") center / contain no-repeat;
-        opacity: 0.14;
-        pointer-events: none;
-        z-index: 0;
+        opacity: 0.1;
       }
-      .bd-sheet-inner {
-        position: relative;
-        z-index: 1;
-      }
+
       .bd-mantra {
-        text-align: center;
-        font-size: 11pt;
-        font-weight: 600;
-        color: var(--bd-brown);
-        margin: 0 0 4px;
-        letter-spacing: 0.02em;
+        font-size: 9.5pt !important;
+        margin-bottom: 2px !important;
       }
+
       .bd-topgrid {
-        display: grid;
-        grid-template-columns: 26mm 1fr;
-        gap: 5mm 6mm;
-        align-items: start;
-        margin-bottom: 5px;
-        padding-bottom: 5px;
-        border-bottom: 1px solid rgba(107, 79, 42, 0.25);
+        margin-bottom: 3px !important;
+        padding-bottom: 3px !important;
+        gap: 4mm 5mm !important;
       }
-      .bd-topgrid.bd-topgrid--nophoto {
-        grid-template-columns: 1fr;
-      }
-      .bd-photo-wrap[data-empty="true"] {
-        display: none;
-      }
-      .bd-intro-line {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 4px 8px;
-        margin: 2px 0 0;
-        font-size: 9pt;
-        color: #44403c;
-        line-height: 1.35;
-      }
-      .bd-intro-line .bd-label {
-        font-weight: 600;
-        color: var(--bd-brown-dark);
-      }
-      .bd-intro-line[data-empty="true"] {
-        display: none !important;
-      }
+
       .bd-photo-slot {
-        width: 26mm;
-        min-height: 32mm;
-        border: 1px solid rgba(107, 79, 42, 0.45);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-size: 6.5pt;
-        color: #78716c;
-        text-align: center;
-        padding: 2px;
-        box-sizing: border-box;
-        background: #fafaf9;
+        /* min-height: 28mm !important; */
+        /* max-height: 34mm; */
       }
-      .bd-photo-slot img {
-        width: 100%;
-        height: auto;
-        max-height: 32mm;
-        object-fit: cover;
-        display: block;
-      }
+
       .bd-intro-name {
-        font-family: var(--font-display), Georgia, serif;
-        font-size: 16pt;
-        font-weight: 700;
-        color: #0c0a09;
-        line-height: 1.15;
-        margin: 0 0 3px;
+        font-size: 14pt !important;
       }
+
       .bd-intro-lines {
-        font-size: 9pt;
-        color: #44403c;
-        line-height: 1.35;
+        font-size: 8.2pt !important;
       }
+
       .bd-section {
-        margin-top: 6px;
+        margin-top: 4px !important;
       }
+
       .bd-pill {
-        display: inline-block;
-        background: var(--bd-pill);
-        color: #fff;
-        font-size: 7.5pt;
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        padding: 3px 10px;
-        border-radius: 4px;
-        margin-bottom: 3px;
+        font-size: 7pt !important;
+        padding: 2px 8px !important;
+        margin-bottom: 2px !important;
       }
-      .bd-rows {
-        border: 1px solid rgba(107, 79, 42, 0.2);
-        border-top: none;
-        padding: 2px 0 1px;
-      }
-      .bd-row {
-        display: grid;
-        grid-template-columns: 34% 1fr;
-        gap: 2px 6px;
-        padding: 2px 8px;
-        font-size: 8.8pt;
-        border-bottom: 1px solid rgba(68, 64, 60, 0.1);
-      }
-      .bd-row:last-child {
-        border-bottom: none;
-      }
-      .bd-label {
-        font-weight: 600;
-        color: var(--bd-brown-dark);
-      }
-      .bd-value {
-        word-break: break-word;
-        color: #1c1917;
-      }
+
+      .bd-row,
       .bd-block {
-        padding: 2px 8px 4px;
-        font-size: 8.8pt;
-        border-bottom: 1px solid rgba(68, 64, 60, 0.1);
+        padding: 10px 6px !important;
+        font-size: 8.1pt !important;
       }
-      .bd-block .bd-label {
-        display: block;
-        margin-bottom: 1px;
-      }
-      .bd-block .bd-value {
-        display: block;
-      }
-      .bd-row[data-empty="true"],
-      .bd-block[data-empty="true"] {
-        display: none !important;
-      }
-      .bd-section[data-hidden="true"] {
-        display: none !important;
-      }
-      /* Classic = traditional brown frame (reference style) */
-      .bd-sheet--classic {
-        font-family: Georgia, "Times New Roman", serif;
-      }
-      .bd-sheet--classic .bd-pill {
-        background: var(--bd-brown);
-      }
-      /* Modern */
-      .bd-sheet--modern {
-        font-family: var(--font-sans), system-ui, sans-serif;
-        border-color: #57534e;
-      }
-      .bd-sheet--modern .bd-mantra {
-        color: #44403c;
-      }
-      .bd-sheet--modern .bd-pill {
-        background: #44403c;
-        border-radius: 2px;
-      }
-      .bd-sheet--modern .bd-intro-name {
-        font-family: var(--font-sans), system-ui, sans-serif;
-      }
-      .bd-sheet--modern .bd-label {
-        color: #57534e;
-      }
-      /* Festive */
-      .bd-sheet--festive {
-        font-family: Georgia, "Times New Roman", serif;
-        border-color: #9a3412;
-      }
-      .bd-sheet--festive .bd-mantra {
-        color: #9a3412;
-      }
-      .bd-sheet--festive .bd-pill {
-        background: linear-gradient(90deg, #b45309, #9a3412);
-      }
-      .bd-sheet--festive .bd-label {
-        color: #7c2d12;
-      }
-      @media screen {
-        .bd-sheet {
-          min-height: 0;
-        }
-      }
-      @media print {
-        @page {
-          size: A4;
-          margin: 5mm;
-        }
-        .no-print {
-          display: none !important;
-        }
-        body {
-          background: #fff !important;
-        }
-        #bd-sheet {
-          box-shadow: none !important;
-          max-width: none !important;
-          width: 100% !important;
-          min-height: 0 !important;
-          padding: 4mm 5mm !important;
-          font-size: 8.6pt !important;
-          line-height: 1.22 !important;
-          border-width: 1.5pt !important;
-          page-break-after: avoid;
-          page-break-inside: avoid;
-        }
-        .bd-watermark {
-          opacity: 0.1;
-        }
-        .bd-mantra {
-          font-size: 9.5pt !important;
-          margin-bottom: 2px !important;
-        }
-        .bd-topgrid {
-          margin-bottom: 3px !important;
-          padding-bottom: 3px !important;
-          gap: 4mm 5mm !important;
-        }
-        .bd-photo-slot {
-          min-height: 28mm !important;
-          max-height: 34mm;
-        }
-        .bd-intro-name {
-          font-size: 14pt !important;
-        }
-        .bd-intro-lines {
-          font-size: 8.2pt !important;
-        }
-        .bd-section {
-          margin-top: 4px !important;
-        }
-        .bd-pill {
-          font-size: 7pt !important;
-          padding: 2px 8px !important;
-          margin-bottom: 2px !important;
-        }
-        .bd-row,
-        .bd-block {
-          padding: 1px 6px !important;
-          font-size: 8.1pt !important;
-        }
-      }
-    </style>
-    <script type="application/ld+json">
+    }
+  </style>
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
@@ -305,319 +435,427 @@
         "description": "Free marriage biodata templates with live preview and PDF export via print."
       }
     </script>
-  </head>
-  <body class="bg-cream-50 font-sans text-stone-800 antialiased">
-    <a
-      href="#main"
-      class="no-print sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2"
-      >Skip to content</a
-    >
+</head>
 
-    <header
-      id="site-header"
-      class="no-print fixed inset-x-0 top-0 z-50 border-b border-cream-200/60 bg-cream-50/95 backdrop-blur-md shadow-soft"
-    >
-      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <a href="index.html" class="flex items-center gap-2">
-          <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-500 to-gold-600 font-display text-lg font-semibold text-white">V</span>
-          <span class="font-display text-xl font-semibold sm:text-2xl">Vivah<span class="text-gold-600"> Biodata</span></span>
-        </a>
-        <nav class="hidden gap-8 text-sm font-medium lg:flex" aria-label="Primary">
-          <a href="index.html" class="hover:text-gold-600">Home</a>
-          <a href="about.html" class="hover:text-gold-600">About</a>
-          <a href="templates.html" class="hover:text-gold-600">Templates</a>
-          <a href="create.html" class="text-gold-600">Make biodata</a>
-          <a href="faq.html" class="hover:text-gold-600">FAQ</a>
-          <a href="contact.html" class="hover:text-gold-600">Contact</a>
-        </nav>
-        <a href="templates.html" class="hidden rounded-full border border-cream-300 bg-white px-4 py-2 text-sm font-semibold lg:inline-block">Browse templates</a>
-        <button
-          type="button"
-          id="menu-toggle"
-          class="rounded-xl border border-cream-300 bg-white/90 p-2.5 lg:hidden"
-          aria-expanded="false"
-          aria-controls="mobile-nav"
-          aria-label="Menu"
-        >
-          <svg id="menu-icon-open" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <svg id="menu-icon-close" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+<body class="bg-cream-50 font-sans text-stone-800 antialiased">
+  <a href="#main"
+    class="no-print sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2">Skip
+    to content</a>
+
+  <header id="site-header"
+    class="no-print fixed inset-x-0 top-0 z-50 border-b border-cream-200/60 bg-cream-50/95 backdrop-blur-md shadow-soft">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <a href="index.html" class="flex items-center gap-2">
+        <span
+          class="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-500 to-gold-600 font-display text-lg font-semibold text-white">V</span>
+        <span class="font-display text-xl font-semibold sm:text-2xl">Vivah<span class="text-gold-600">
+            Biodata</span></span>
+      </a>
+      <nav class="hidden gap-8 text-sm font-medium lg:flex" aria-label="Primary">
+        <a href="index.html" class="hover:text-gold-600">Home</a>
+        <a href="about.html" class="hover:text-gold-600">About</a>
+        <a href="templates.html" class="hover:text-gold-600">Templates</a>
+        <a href="create.html" class="text-gold-600">Make biodata</a>
+        <a href="faq.html" class="hover:text-gold-600">FAQ</a>
+        <a href="contact.html" class="hover:text-gold-600">Contact</a>
+      </nav>
+      <a href="templates.html"
+        class="hidden rounded-full border border-cream-300 bg-white px-4 py-2 text-sm font-semibold lg:inline-block">Browse
+        templates</a>
+      <button type="button" id="menu-toggle" class="rounded-xl border border-cream-300 bg-white/90 p-2.5 lg:hidden"
+        aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
+        <svg id="menu-icon-open" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="menu-icon-close" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-nav" class="hidden border-t border-cream-200 bg-cream-50 px-4 py-4 lg:hidden">
+      <nav class="flex flex-col gap-1 font-medium">
+        <a class="rounded-lg px-3 py-2 hover:bg-cream-200/50" href="index.html">Home</a>
+        <a class="rounded-lg px-3 py-2 hover:bg-cream-200/50" href="templates.html">Templates</a>
+        <a class="rounded-lg px-3 py-2 text-gold-700" href="create.html">Make biodata</a>
+        <a class="rounded-lg px-3 py-2 hover:bg-cream-200/50" href="faq.html">FAQ</a>
+        <a class="rounded-lg px-3 py-2 hover:bg-cream-200/50" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="pt-[76px]">
+    <section class="no-print border-b border-cream-200 bg-hero-mesh py-10 sm:py-12">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h1 class="font-display text-3xl font-semibold text-stone-900 sm:text-4xl">Make your marriage biodata — <span
+            class="text-gold-600">100% free</span></h1>
+        <p class="mt-3 max-w-3xl text-stone-600">
+          Pick a visible template style below, fill in your details, and watch the preview update in real time. When you
+          are ready, use
+          <strong class="text-stone-800">Print / Save as PDF</strong> — in the print dialog choose <strong
+            class="text-stone-800">Save as PDF</strong> to download your
+          filled biodata. No payment and no signup required on this site.
+        </p>
       </div>
-      <div id="mobile-nav" class="hidden border-t border-cream-200 bg-cream-50 px-4 py-4 lg:hidden">
-        <nav class="flex flex-col gap-1 font-medium">
-          <a class="rounded-lg px-3 py-2 hover:bg-cream-200/50" href="index.html">Home</a>
-          <a class="rounded-lg px-3 py-2 hover:bg-cream-200/50" href="templates.html">Templates</a>
-          <a class="rounded-lg px-3 py-2 text-gold-700" href="create.html">Make biodata</a>
-          <a class="rounded-lg px-3 py-2 hover:bg-cream-200/50" href="faq.html">FAQ</a>
-          <a class="rounded-lg px-3 py-2 hover:bg-cream-200/50" href="contact.html">Contact</a>
-        </nav>
-      </div>
-    </header>
+    </section>
 
-    <main id="main" class="pt-[76px]">
-      <section class="no-print border-b border-cream-200 bg-hero-mesh py-10 sm:py-12">
-        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <h1 class="font-display text-3xl font-semibold text-stone-900 sm:text-4xl">Make your marriage biodata — <span class="text-gold-600">100% free</span></h1>
-          <p class="mt-3 max-w-3xl text-stone-600">
-            Pick a visible template style below, fill in your details, and watch the preview update in real time. When you are ready, use
-            <strong class="text-stone-800">Print / Save as PDF</strong> — in the print dialog choose <strong class="text-stone-800">Save as PDF</strong> to download your
-            filled biodata. No payment and no signup required on this site.
-          </p>
-        </div>
-      </section>
-
-      <div class="mx-auto grid max-w-6xl gap-10 px-4 py-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,420px)] lg:items-start lg:gap-12 sm:px-6 lg:px-8">
-        <form id="bd-form" class="no-print space-y-8" autocomplete="on">
-          <fieldset class="rounded-2xl border border-cream-200 bg-white p-5 shadow-soft">
-            <legend class="px-1 font-display text-lg font-semibold text-stone-900">1. Template look</legend>
-            <p class="mt-1 text-sm text-stone-600">Traditional brown &amp; white (like common printed biodata), modern grey, or festive red accents.</p>
-            <div class="mt-4 flex flex-wrap gap-3">
-              <button type="button" data-theme-pick="classic" class="rounded-full border border-cream-300 bg-cream-50 px-4 py-2 text-sm font-semibold transition hover:border-gold-500">
-                Traditional brown
-              </button>
-              <button type="button" data-theme-pick="modern" class="rounded-full border border-cream-300 bg-cream-50 px-4 py-2 text-sm font-semibold transition hover:border-gold-500">
-                Modern clean
-              </button>
-              <button type="button" data-theme-pick="festive" class="rounded-full border border-cream-300 bg-cream-50 px-4 py-2 text-sm font-semibold transition hover:border-gold-500">
-                Festive blush
-              </button>
-            </div>
-          </fieldset>
-
-          <fieldset class="rounded-2xl border border-cream-200 bg-white p-5 shadow-soft">
-            <legend class="px-1 font-display text-lg font-semibold text-stone-900">2. Photo (optional)</legend>
-            <p class="mt-1 text-sm text-stone-600">Small passport-style image appears on the biodata. Omit if you prefer to attach a photo later.</p>
-            <input id="photoFile" name="photoFile" type="file" accept="image/*" class="mt-2 text-sm" />
-          </fieldset>
-
-          <fieldset class="rounded-2xl border border-cream-200 bg-white p-5 shadow-soft">
-            <legend class="px-1 font-display text-lg font-semibold text-stone-900">3. Personal</legend>
-            <div class="mt-4 grid gap-4 sm:grid-cols-2">
-              <div>
-                <label class="block text-sm font-medium text-stone-700" for="fullName">Full name</label>
-                <input id="fullName" name="fullName" type="text" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" placeholder="As it should appear" />
+    <div
+      class="mx-auto grid max-w-6xl gap-10 px-4 py-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,420px)] lg:items-start lg:gap-12 sm:px-6 lg:px-8">
+      <form id="bd-form" class="no-print space-y-8" autocomplete="on">
+        <fieldset class="rounded-2xl border border-cream-200 bg-white p-5 shadow-soft">
+          <legend class="px-1 font-display text-lg font-semibold text-stone-900">1. Template look</legend>
+          <p class="mt-1 text-sm text-stone-600">Choose from traditional, modern, festive, minimal, elegant, or contrast
+            styles. The live preview updates instantly.</p>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <button type="button" data-theme-pick="classic"
+              class="group rounded-3xl border border-cream-300 bg-cream-50 p-3 text-left transition hover:border-gold-500">
+              <div
+                class="mb-3 h-14 rounded-2xl bg-gradient-to-r from-amber-100 via-white to-amber-50 border border-amber-200">
               </div>
-              <div>
-                <label class="block text-sm font-medium text-stone-700" for="dob">Date of birth</label>
-                <input id="dob" name="dob" type="text" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" placeholder="e.g. 12 March 1996" />
+              <span class="block text-sm font-semibold text-stone-900">Traditional brown</span>
+              <span class="mt-1 text-xs text-stone-500">Soft heritage accent</span>
+            </button>
+            <button type="button" data-theme-pick="modern"
+              class="group rounded-3xl border border-cream-300 bg-cream-50 p-3 text-left transition hover:border-gold-500">
+              <div
+                class="mb-3 h-14 rounded-2xl bg-gradient-to-r from-slate-100 via-white to-slate-50 border border-slate-200">
               </div>
-              <div>
-                <label class="block text-sm font-medium text-stone-700" for="pob">Place of birth</label>
-                <input id="pob" name="pob" type="text" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
+              <span class="block text-sm font-semibold text-stone-900">Modern clean</span>
+              <span class="mt-1 text-xs text-stone-500">Minimal lines with calm grey</span>
+            </button>
+            <button type="button" data-theme-pick="festive"
+              class="group rounded-3xl border border-cream-300 bg-cream-50 p-3 text-left transition hover:border-gold-500">
+              <div
+                class="mb-3 h-14 rounded-2xl bg-gradient-to-r from-rose-100 via-white to-rose-50 border border-rose-soft">
               </div>
-              <div>
-                <label class="block text-sm font-medium text-stone-700" for="height">Height</label>
-                <input id="height" name="height" type="text" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" placeholder="e.g. 5 ft 8 in" />
+              <span class="block text-sm font-semibold text-stone-900">Festive blush</span>
+              <span class="mt-1 text-xs text-stone-500">Warm red highlight style</span>
+            </button>
+            <button type="button" data-theme-pick="minimal"
+              class="group rounded-3xl border border-cream-300 bg-cream-50 p-3 text-left transition hover:border-gold-500">
+              <div class="mb-3 h-14 rounded-2xl bg-white border border-slate-200"></div>
+              <span class="block text-sm font-semibold text-stone-900">Minimal white</span>
+              <span class="mt-1 text-xs text-stone-500">Clean, open, extra whitespace</span>
+            </button>
+            <button type="button" data-theme-pick="elegant"
+              class="group rounded-3xl border border-cream-300 bg-cream-50 p-3 text-left transition hover:border-gold-500">
+              <div
+                class="mb-3 h-14 rounded-2xl bg-gradient-to-r from-slate-800 via-slate-900 to-slate-700 border border-slate-900">
               </div>
-              <div>
-                <label class="block text-sm font-medium text-stone-700" for="tob">Time of birth</label>
-                <input id="tob" name="tob" type="text" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" placeholder="e.g. 7:20 PM" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-stone-700" for="complexion">Complexion</label>
-                <input id="complexion" name="complexion" type="text" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset class="rounded-2xl border border-cream-200 bg-white p-5 shadow-soft">
-            <legend class="px-1 font-display text-lg font-semibold text-stone-900">4. Family</legend>
-            <div class="mt-4 grid gap-4 sm:grid-cols-2">
-              <div>
-                <label class="block text-sm font-medium text-stone-700" for="fatherName">Father’s name</label>
-                <input id="fatherName" name="fatherName" type="text" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-stone-700" for="fatherOcc">Father’s occupation</label>
-                <input id="fatherOcc" name="fatherOcc" type="text" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-stone-700" for="motherName">Mother’s name</label>
-                <input id="motherName" name="motherName" type="text" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-stone-700" for="motherOcc">Mother’s occupation</label>
-                <input id="motherOcc" name="motherOcc" type="text" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
-              </div>
-              <div class="sm:col-span-2">
-                <label class="block text-sm font-medium text-stone-700" for="siblings">Siblings</label>
-                <input id="siblings" name="siblings" type="text" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" placeholder="Brief list" />
-              </div>
-              <div class="sm:col-span-2">
-                <label class="block text-sm font-medium text-stone-700" for="familyBrief">Family background</label>
-                <textarea id="familyBrief" name="familyBrief" rows="3" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" placeholder="Occupation, city, brief note"></textarea>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-stone-700" for="gotra">Gotra (optional)</label>
-                <input id="gotra" name="gotra" type="text" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset class="rounded-2xl border border-cream-200 bg-white p-5 shadow-soft">
-            <legend class="px-1 font-display text-lg font-semibold text-stone-900">5. Education &amp; career</legend>
-            <div class="mt-4 grid gap-4 sm:grid-cols-2">
-              <div class="sm:col-span-2">
-                <label class="block text-sm font-medium text-stone-700" for="education">Education</label>
-                <textarea id="education" name="education" rows="2" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm"></textarea>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-stone-700" for="occupation">Occupation</label>
-                <input id="occupation" name="occupation" type="text" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-stone-700" for="income">Income (optional)</label>
-                <input id="income" name="income" type="text" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset class="rounded-2xl border border-cream-200 bg-white p-5 shadow-soft">
-            <legend class="px-1 font-display text-lg font-semibold text-stone-900">6. Horoscope (optional)</legend>
-            <div class="mt-4 grid gap-4 sm:grid-cols-2">
-              <div>
-                <label class="block text-sm font-medium text-stone-700" for="rashi">Rashi</label>
-                <input id="rashi" name="rashi" type="text" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-stone-700" for="nakshatra">Nakshatra</label>
-                <input id="nakshatra" name="nakshatra" type="text" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset class="rounded-2xl border border-cream-200 bg-white p-5 shadow-soft">
-            <legend class="px-1 font-display text-lg font-semibold text-stone-900">7. Contact &amp; preferences</legend>
-            <div class="mt-4 grid gap-4 sm:grid-cols-2">
-              <div>
-                <label class="block text-sm font-medium text-stone-700" for="phone">Phone</label>
-                <input id="phone" name="phone" type="tel" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-stone-700" for="email">Email</label>
-                <input id="email" name="email" type="email" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
-              </div>
-              <div class="sm:col-span-2">
-                <label class="block text-sm font-medium text-stone-700" for="address">Address / city</label>
-                <textarea id="address" name="address" rows="2" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm"></textarea>
-              </div>
-              <div class="sm:col-span-2">
-                <label class="block text-sm font-medium text-stone-700" for="partnerPrefs">Partner preferences</label>
-                <textarea id="partnerPrefs" name="partnerPrefs" rows="3" class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm"></textarea>
-              </div>
-            </div>
-          </fieldset>
-
-          <div class="rounded-2xl border border-gold-400/50 bg-gradient-to-br from-cream-50 to-white p-6 shadow-soft">
-            <p class="font-display text-lg font-semibold text-stone-900">Get your filled PDF</p>
-            <p class="mt-2 text-sm text-stone-600">
-              Click the button below. Your browser will open the print window — choose <strong>Save as PDF</strong> (or Microsoft Print to PDF) as the destination. Add a photo above if you want it on the sheet; blank fields are left out of the printout.
-            </p>
-            <button
-              type="button"
-              id="btn-print-pdf"
-              class="mt-4 w-full rounded-full bg-gradient-to-r from-gold-500 to-gold-600 py-3.5 text-sm font-semibold text-white shadow-soft transition hover:from-gold-600 sm:w-auto sm:px-10"
-            >
-              Print / Save as PDF
+              <span class="block text-sm font-semibold text-stone-900">Elegant navy</span>
+              <span class="mt-1 text-xs text-stone-500">Dark accent with polished contrast</span>
+            </button>
+            <button type="button" data-theme-pick="contrast"
+              class="group rounded-3xl border border-cream-300 bg-cream-50 p-3 text-left transition hover:border-gold-500">
+              <div class="mb-3 h-14 rounded-2xl bg-slate-900"></div>
+              <span class="block text-sm font-semibold text-stone-900">Contrast slate</span>
+              <span class="mt-1 text-xs text-stone-500">Bold slab sections for clarity</span>
             </button>
           </div>
-        </form>
+        </fieldset>
 
-        <div class="lg:sticky lg:top-24">
-          <p class="no-print mb-3 text-sm font-semibold text-stone-800">Live preview (matches your PDF)</p>
-          <div id="bd-sheet" class="bd-sheet bd-sheet--classic rounded-sm">
-            <div class="bd-watermark" aria-hidden="true"></div>
-            <div class="bd-sheet-inner">
-              <p class="bd-mantra">ॐ श्री गणेशाय नमः</p>
+        <fieldset class="rounded-2xl border border-cream-200 bg-white p-5 shadow-soft">
+          <legend class="px-1 font-display text-lg font-semibold text-stone-900">2. Typography</legend>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="fontFamily" class="block text-sm font-medium text-stone-700">Font family</label>
+              <select id="fontFamily" name="fontFamily"
+                class="mt-2 w-full rounded-xl border border-cream-300 bg-white px-3 py-2 text-sm">
+                <option value="Inter">Inter</option>
+                <option value="DM Sans">DM Sans</option>
+                <option value="Cormorant Garamond">Cormorant Garamond</option>
+                <option value="Georgia">Georgia</option>
+              </select>
+            </div>
+            <div>
+              <label for="fontSize" class="block text-sm font-medium text-stone-700">Font size</label>
+              <select id="fontSize" name="fontSize"
+                class="mt-2 w-full rounded-xl border border-cream-300 bg-white px-3 py-2 text-sm">
+                <option value="0.92">Compact</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.08">Spacious</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
 
-              <div id="bd-topgrid" class="bd-topgrid bd-topgrid--nophoto">
-                <div id="bd-photo-wrap" class="bd-photo-wrap" data-empty="true">
-                  <div class="bd-photo-slot">
-                    <img id="bd-photo" alt="" width="120" height="160" hidden />
+        <fieldset class="rounded-2xl border border-cream-200 bg-white p-5 shadow-soft">
+          <legend class="px-1 font-display text-lg font-semibold text-stone-900">3. Photo (optional)</legend>
+          <p class="mt-1 text-sm text-stone-600">Small passport-style image appears on the biodata. Omit if you prefer
+            to attach a photo later.</p>
+          <input id="photoFile" name="photoFile" type="file" accept="image/*" class="mt-2 text-sm" />
+        </fieldset>
+
+        <fieldset class="rounded-2xl border border-cream-200 bg-white p-5 shadow-soft">
+          <legend class="px-1 font-display text-lg font-semibold text-stone-900">3. Personal</legend>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <div>
+              <label class="block text-sm font-medium text-stone-700" for="fullName">Full name</label>
+              <input id="fullName" name="fullName" type="text"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm"
+                placeholder="As it should appear" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-stone-700" for="dob">Date of birth</label>
+              <input id="dob" name="dob" type="text"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm"
+                placeholder="e.g. 12 March 1996" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-stone-700" for="pob">Place of birth</label>
+              <input id="pob" name="pob" type="text"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-stone-700" for="height">Height</label>
+              <input id="height" name="height" type="text"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm"
+                placeholder="e.g. 5 ft 8 in" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-stone-700" for="tob">Time of birth</label>
+              <input id="tob" name="tob" type="text"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" placeholder="e.g. 7:20 PM" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-stone-700" for="complexion">Complexion</label>
+              <input id="complexion" name="complexion" type="text"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="rounded-2xl border border-cream-200 bg-white p-5 shadow-soft">
+          <legend class="px-1 font-display text-lg font-semibold text-stone-900">4. Family</legend>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <div>
+              <label class="block text-sm font-medium text-stone-700" for="fatherName">Father’s name</label>
+              <input id="fatherName" name="fatherName" type="text"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-stone-700" for="fatherOcc">Father’s occupation</label>
+              <input id="fatherOcc" name="fatherOcc" type="text"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-stone-700" for="motherName">Mother’s name</label>
+              <input id="motherName" name="motherName" type="text"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-stone-700" for="motherOcc">Mother’s occupation</label>
+              <input id="motherOcc" name="motherOcc" type="text"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-sm font-medium text-stone-700" for="siblings">Siblings</label>
+              <input id="siblings" name="siblings" type="text"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" placeholder="Brief list" />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-sm font-medium text-stone-700" for="familyBrief">Family background</label>
+              <textarea id="familyBrief" name="familyBrief" rows="3"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm"
+                placeholder="Occupation, city, brief note"></textarea>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-stone-700" for="gotra">Gotra (optional)</label>
+              <input id="gotra" name="gotra" type="text"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="rounded-2xl border border-cream-200 bg-white p-5 shadow-soft">
+          <legend class="px-1 font-display text-lg font-semibold text-stone-900">5. Education &amp; career</legend>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <div class="sm:col-span-2">
+              <label class="block text-sm font-medium text-stone-700" for="education">Education</label>
+              <textarea id="education" name="education" rows="2"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm"></textarea>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-stone-700" for="occupation">Occupation</label>
+              <input id="occupation" name="occupation" type="text"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-stone-700" for="income">Income (optional)</label>
+              <input id="income" name="income" type="text"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="rounded-2xl border border-cream-200 bg-white p-5 shadow-soft">
+          <legend class="px-1 font-display text-lg font-semibold text-stone-900">6. Horoscope (optional)</legend>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <div>
+              <label class="block text-sm font-medium text-stone-700" for="rashi">Rashi</label>
+              <input id="rashi" name="rashi" type="text"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-stone-700" for="nakshatra">Nakshatra</label>
+              <input id="nakshatra" name="nakshatra" type="text"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="rounded-2xl border border-cream-200 bg-white p-5 shadow-soft">
+          <legend class="px-1 font-display text-lg font-semibold text-stone-900">7. Contact &amp; preferences</legend>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <div>
+              <label class="block text-sm font-medium text-stone-700" for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-stone-700" for="email">Email</label>
+              <input id="email" name="email" type="email"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm" />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-sm font-medium text-stone-700" for="address">Address / city</label>
+              <textarea id="address" name="address" rows="2"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm"></textarea>
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-sm font-medium text-stone-700" for="partnerPrefs">Partner preferences</label>
+              <textarea id="partnerPrefs" name="partnerPrefs" rows="3"
+                class="mt-1 w-full rounded-xl border border-cream-300 px-3 py-2.5 text-sm"></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="rounded-2xl border border-gold-400/50 bg-gradient-to-br from-cream-50 to-white p-6 shadow-soft">
+          <p class="font-display text-lg font-semibold text-stone-900">Get your filled PDF</p>
+          <p class="mt-2 text-sm text-stone-600">
+            Click the button below. Your browser will open the print window — choose <strong>Save as PDF</strong> (or
+            Microsoft Print to PDF) as the destination. Add a photo above if you want it on the sheet; blank fields are
+            left out of the printout.
+          </p>
+          <button type="button" id="btn-print-pdf"
+            class="mt-4 w-full rounded-full bg-gradient-to-r from-gold-500 to-gold-600 py-3.5 text-sm font-semibold text-white shadow-soft transition hover:from-gold-600 sm:w-auto sm:px-10">
+            Print / Save as PDF
+          </button>
+        </div>
+      </form>
+
+      <div class="lg:sticky lg:top-24">
+        <p class="no-print mb-3 text-sm font-semibold text-stone-800">Live preview (matches your PDF)</p>
+        <div id="bd-sheet" class="bd-sheet bd-sheet--classic rounded-sm">
+          <div class="bd-watermark" aria-hidden="true"></div>
+          <div class="bd-sheet-inner">
+            <p class="bd-mantra">ॐ श्री गणेशाय नमः</p>
+
+            <div id="bd-topgrid" class="bd-topgrid bd-topgrid--nophoto">
+              <div id="bd-photo-wrap" class="bd-photo-wrap" data-empty="true">
+                <div class="bd-photo-slot">
+                  <img id="bd-photo" alt="" width="120" height="160" hidden />
+                </div>
+              </div>
+              <div class="bd-intro">
+                <p id="pv-name" class="bd-intro-name">Your name here</p>
+                <div class="bd-intro-lines">
+                  <div id="row-dob-head" class="bd-intro-line" data-bd-row data-empty="true">
+                    <span class="bd-label">Date of birth</span><span class="bd-value"></span>
+                  </div>
+                  <div id="row-pob-head" class="bd-intro-line" data-bd-row data-empty="true">
+                    <span class="bd-label">Place of birth</span><span class="bd-value"></span>
                   </div>
                 </div>
-                <div class="bd-intro">
-                  <p id="pv-name" class="bd-intro-name">Your name here</p>
-                  <div class="bd-intro-lines">
-                    <div id="row-dob-head" class="bd-intro-line" data-bd-row data-empty="true">
-                      <span class="bd-label">Date of birth</span><span class="bd-value"></span>
-                    </div>
-                    <div id="row-pob-head" class="bd-intro-line" data-bd-row data-empty="true">
-                      <span class="bd-label">Place of birth</span><span class="bd-value"></span>
-                    </div>
-                  </div>
-                </div>
               </div>
+            </div>
 
-              <div class="bd-section" data-bd-section data-hidden="true">
-                <div class="bd-pill">Personal details</div>
-                <div class="bd-rows">
-                  <div id="row-dob" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Date of birth</span><span class="bd-value"></span></div>
-                  <div id="row-tob" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Time of birth</span><span class="bd-value"></span></div>
-                  <div id="row-pob" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Place of birth</span><span class="bd-value"></span></div>
-                  <div id="row-rashi" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Rashi</span><span class="bd-value"></span></div>
-                  <div id="row-nakshatra" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Nakshatra</span><span class="bd-value"></span></div>
-                  <div id="row-complexion" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Complexion</span><span class="bd-value"></span></div>
-                  <div id="row-height" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Height</span><span class="bd-value"></span></div>
-                  <div id="row-gotra" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Gotra</span><span class="bd-value"></span></div>
-                  <div id="row-education" class="bd-block" data-bd-row data-empty="true"><span class="bd-label">Education</span><span class="bd-value"></span></div>
-                  <div id="row-work" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Occupation</span><span class="bd-value"></span></div>
-                  <div id="row-income" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Income</span><span class="bd-value"></span></div>
-                </div>
+            <div class="bd-section" data-bd-section data-hidden="true">
+              <div class="bd-pill">Personal details</div>
+              <div class="bd-rows">
+                <div id="row-dob" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Date of
+                    birth</span><span class="bd-value"></span></div>
+                <div id="row-tob" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Time of
+                    birth</span><span class="bd-value"></span></div>
+                <div id="row-pob" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Place of
+                    birth</span><span class="bd-value"></span></div>
+                <div id="row-rashi" class="bd-row" data-bd-row data-empty="true"><span
+                    class="bd-label">Rashi</span><span class="bd-value"></span></div>
+                <div id="row-nakshatra" class="bd-row" data-bd-row data-empty="true"><span
+                    class="bd-label">Nakshatra</span><span class="bd-value"></span></div>
+                <div id="row-complexion" class="bd-row" data-bd-row data-empty="true"><span
+                    class="bd-label">Complexion</span><span class="bd-value"></span></div>
+                <div id="row-height" class="bd-row" data-bd-row data-empty="true"><span
+                    class="bd-label">Height</span><span class="bd-value"></span></div>
+                <div id="row-gotra" class="bd-row" data-bd-row data-empty="true"><span
+                    class="bd-label">Gotra</span><span class="bd-value"></span></div>
+                <div id="row-education" class="bd-block" data-bd-row data-empty="true"><span
+                    class="bd-label">Education</span><span class="bd-value"></span></div>
+                <div id="row-work" class="bd-row" data-bd-row data-empty="true"><span
+                    class="bd-label">Occupation</span><span class="bd-value"></span></div>
+                <div id="row-income" class="bd-row" data-bd-row data-empty="true"><span
+                    class="bd-label">Income</span><span class="bd-value"></span></div>
               </div>
+            </div>
 
-              <div class="bd-section" data-bd-section data-hidden="true">
-                <div class="bd-pill">Family details</div>
-                <div class="bd-rows">
-                  <div id="row-father" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Father’s name</span><span class="bd-value"></span></div>
-                  <div id="row-fatherocc" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Father’s occupation</span><span class="bd-value"></span></div>
-                  <div id="row-mother" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Mother’s name</span><span class="bd-value"></span></div>
-                  <div id="row-motherocc" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Mother’s occupation</span><span class="bd-value"></span></div>
-                  <div id="row-siblings" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Siblings</span><span class="bd-value"></span></div>
-                  <div id="blk-family" class="bd-block" data-bd-row data-empty="true"><span class="bd-label">Family background</span><span class="bd-value"></span></div>
-                </div>
+            <div class="bd-section" data-bd-section data-hidden="true">
+              <div class="bd-pill">Family details</div>
+              <div class="bd-rows">
+                <div id="row-father" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Father’s
+                    name</span><span class="bd-value"></span></div>
+                <div id="row-fatherocc" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Father’s
+                    occupation</span><span class="bd-value"></span></div>
+                <div id="row-mother" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Mother’s
+                    name</span><span class="bd-value"></span></div>
+                <div id="row-motherocc" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Mother’s
+                    occupation</span><span class="bd-value"></span></div>
+                <div id="row-siblings" class="bd-row" data-bd-row data-empty="true"><span
+                    class="bd-label">Siblings</span><span class="bd-value"></span></div>
+                <div id="blk-family" class="bd-block" data-bd-row data-empty="true"><span class="bd-label">Family
+                    background</span><span class="bd-value"></span></div>
               </div>
+            </div>
 
-              <div class="bd-section" data-bd-section data-hidden="true">
-                <div class="bd-pill">Contact</div>
-                <div class="bd-rows">
-                  <div id="row-phone" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Phone</span><span class="bd-value"></span></div>
-                  <div id="row-email" class="bd-row" data-bd-row data-empty="true"><span class="bd-label">Email</span><span class="bd-value"></span></div>
-                  <div id="blk-address" class="bd-block" data-bd-row data-empty="true"><span class="bd-label">Address</span><span class="bd-value"></span></div>
-                </div>
+            <div class="bd-section" data-bd-section data-hidden="true">
+              <div class="bd-pill">Contact</div>
+              <div class="bd-rows">
+                <div id="row-phone" class="bd-row" data-bd-row data-empty="true"><span
+                    class="bd-label">Phone</span><span class="bd-value"></span></div>
+                <div id="row-email" class="bd-row" data-bd-row data-empty="true"><span
+                    class="bd-label">Email</span><span class="bd-value"></span></div>
+                <div id="blk-address" class="bd-block" data-bd-row data-empty="true"><span
+                    class="bd-label">Address</span><span class="bd-value"></span></div>
               </div>
+            </div>
 
-              <div class="bd-section" data-bd-section data-hidden="true">
-                <div class="bd-pill">Partner preferences</div>
-                <div class="bd-rows">
-                  <div id="blk-prefs" class="bd-block" data-bd-row data-empty="true"><span class="bd-value"></span></div>
-                </div>
+            <div class="bd-section" data-bd-section data-hidden="true">
+              <div class="bd-pill">Partner preferences</div>
+              <div class="bd-rows">
+                <div id="blk-prefs" class="bd-block" data-bd-row data-empty="true"><span class="bd-value"></span></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </main>
+    </div>
+  </main>
 
-    <footer class="no-print border-t border-cream-200 bg-stone-900 py-10 text-center text-sm text-cream-200">
-      <div class="flex flex-wrap justify-center gap-6">
-        <a href="templates.html" class="hover:text-white">Templates</a>
-        <a href="faq.html" class="hover:text-white">FAQ</a>
-        <a href="contact.html" class="hover:text-white">Contact</a>
-      </div>
-      <p class="mt-6 text-xs text-cream-200/60">© <span id="y"></span> Vivah Biodata — all templates free on this site.</p>
-    </footer>
+  <footer class="no-print border-t border-cream-200 bg-stone-900 py-10 text-center text-sm text-cream-200">
+    <div class="flex flex-wrap justify-center gap-6">
+      <a href="templates.html" class="hover:text-white">Templates</a>
+      <a href="faq.html" class="hover:text-white">FAQ</a>
+      <a href="contact.html" class="hover:text-white">Contact</a>
+    </div>
+    <p class="mt-6 text-xs text-cream-200/60">© <span id="y"></span> Vivah Biodata — all templates free on this site.
+    </p>
+  </footer>
 
-    <script>
-      document.getElementById("y").textContent = new Date().getFullYear();
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-    <script src="js/main.js" defer></script>
-    <script src="js/biodata-maker.js" defer></script>
-  </body>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/biodata-maker.js" defer></script>
+</body>
+
 </html>
