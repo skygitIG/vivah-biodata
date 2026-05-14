@@ -6,6 +6,11 @@
 
   var sheet = document.getElementById("bd-sheet");
   var form = document.getElementById("bd-form");
+  var topGrid = document.getElementById("bd-topgrid");
+  var photoWrap = document.getElementById("bd-photo-wrap");
+  var photoImg = document.getElementById("bd-photo");
+  var photoInput = document.getElementById("photoFile");
+
   if (!sheet || !form) return;
 
   var themes = ["classic", "modern", "festive"];
@@ -14,33 +19,85 @@
 
   function val(id) {
     var el = document.getElementById(id);
-    return el && el.value ? el.value.trim() : "";
+    return el && el.value ? String(el.value).trim() : "";
   }
 
-  function setText(id, text) {
-    var el = document.getElementById(id);
-    if (el) el.textContent = text || "—";
+  function setRow(row, text) {
+    if (!row) return;
+    var v = row.querySelector(".bd-value");
+    if (v) v.textContent = text;
+    if (text) {
+      row.removeAttribute("data-empty");
+    } else {
+      row.setAttribute("data-empty", "true");
+    }
+  }
+
+  function setName() {
+    var el = document.getElementById("pv-name");
+    var t = val("fullName");
+    if (el) el.textContent = t || "Your name here";
+  }
+
+  function syncPhoto() {
+    if (!photoWrap || !topGrid || !photoImg) return;
+    var src = photoImg.getAttribute("src");
+    if (src) {
+      photoImg.removeAttribute("hidden");
+      photoWrap.removeAttribute("data-empty");
+      topGrid.classList.remove("bd-topgrid--nophoto");
+    } else {
+      photoImg.setAttribute("hidden", "");
+      photoWrap.setAttribute("data-empty", "true");
+      topGrid.classList.add("bd-topgrid--nophoto");
+    }
+  }
+
+  function syncSection(sec) {
+    if (!sec) return;
+    var visible = false;
+    sec.querySelectorAll("[data-bd-row]").forEach(function (node) {
+      if (node.getAttribute("data-empty") !== "true") visible = true;
+    });
+    if (visible) sec.removeAttribute("data-hidden");
+    else sec.setAttribute("data-hidden", "true");
   }
 
   function sync() {
-    setText("pv-name", val("fullName") || "Your name here");
-    setText("pv-father", val("fatherName"));
-    setText("pv-mother", val("motherName"));
-    setText("pv-dob", val("dob"));
-    setText("pv-pob", val("pob"));
-    setText("pv-height", val("height"));
-    setText("pv-education", val("education"));
-    setText("pv-work", val("occupation"));
-    setText("pv-income", val("income"));
-    setText("pv-siblings", val("siblings"));
-    setText("pv-family", val("familyBrief"));
-    setText("pv-phone", val("phone"));
-    setText("pv-email", val("email"));
-    setText("pv-address", val("address"));
-    setText("pv-gotra", val("gotra"));
-    setText("pv-prefs", val("partnerPrefs"));
-    setText("pv-rashi", val("rashi"));
-    setText("pv-nakshatra", val("nakshatra"));
+    setName();
+
+    var dob = val("dob");
+    var pob = val("pob");
+    setRow(document.getElementById("row-dob-head"), dob);
+    setRow(document.getElementById("row-pob-head"), pob);
+
+    setRow(document.getElementById("row-dob"), dob);
+    setRow(document.getElementById("row-tob"), val("tob"));
+    setRow(document.getElementById("row-pob"), pob);
+    setRow(document.getElementById("row-rashi"), val("rashi"));
+    setRow(document.getElementById("row-nakshatra"), val("nakshatra"));
+    setRow(document.getElementById("row-complexion"), val("complexion"));
+    setRow(document.getElementById("row-height"), val("height"));
+    setRow(document.getElementById("row-gotra"), val("gotra"));
+    setRow(document.getElementById("row-education"), val("education"));
+    setRow(document.getElementById("row-work"), val("occupation"));
+    setRow(document.getElementById("row-income"), val("income"));
+
+    setRow(document.getElementById("row-father"), val("fatherName"));
+    setRow(document.getElementById("row-fatherocc"), val("fatherOcc"));
+    setRow(document.getElementById("row-mother"), val("motherName"));
+    setRow(document.getElementById("row-motherocc"), val("motherOcc"));
+    setRow(document.getElementById("row-siblings"), val("siblings"));
+    setRow(document.getElementById("blk-family"), val("familyBrief"));
+
+    setRow(document.getElementById("row-phone"), val("phone"));
+    setRow(document.getElementById("row-email"), val("email"));
+    setRow(document.getElementById("blk-address"), val("address"));
+    setRow(document.getElementById("blk-prefs"), val("partnerPrefs"));
+
+    syncPhoto();
+
+    document.querySelectorAll("[data-bd-section]").forEach(syncSection);
   }
 
   function applyTheme(t) {
@@ -64,6 +121,27 @@
       applyTheme(btn.getAttribute("data-theme-pick"));
     });
   });
+
+  if (photoInput && photoImg) {
+    photoInput.addEventListener("change", function () {
+      var f = photoInput.files && photoInput.files[0];
+      if (!f) {
+        photoImg.removeAttribute("src");
+        sync();
+        return;
+      }
+      var reader = new FileReader();
+      reader.onload = function () {
+        photoImg.src = reader.result;
+        sync();
+      };
+      reader.onerror = function () {
+        photoImg.removeAttribute("src");
+        sync();
+      };
+      reader.readAsDataURL(f);
+    });
+  }
 
   form.addEventListener("input", sync);
   form.addEventListener("change", sync);
